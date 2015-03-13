@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!-- build:[ng-app]:e2e sn.title.example.e2e -->
-<html lang="en" ng-app="sn.title.example" ng-strict-di>
-<!-- /build -->
+<html lang="en" ng-app="sn.title.e2e" ng-strict-di>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -21,16 +19,42 @@
     </head>
     <body>
 
+        <a href="#/pageone">Page One</a><br>
+        <a href="#/pagetwo">Page Two</a><br>
+        <a href="#/pagethree">Page Three</a>
         <ng-view></ng-view>
 
-        <!-- build:js js/app.min.js -->
         <script src="components/angular/angular.js"></script>
         <script src="components/angular-route/angular-route.js"></script>
 
-        <script src="js/title/js"></script>
-
+        <!-- build:js js/angular-title.min.js -->
+        <script src="js/title.js"></script>
         <!-- /build -->
-        <!-- build:include:e2e ../tests/e2e/scripts.html --><!-- /build -->
+
+        <script>
+            angular.module("sn.title.e2e", ["ngRoute", "sn.title"])
+
+            .config([
+                "$routeProvider",
+                function ($routeProvider) {
+
+                    $routeProvider
+                        .when("/pageone", {
+                            title: "pageone"
+                        })
+                        .when("/pagetwo", {
+                            title: "pagetwo"
+                        })
+                        .when("/pagethree", {
+
+                        })
+                        .otherwise({
+                            redirectTo: "/pageone"
+                        })
+                }
+
+            ])
+        </script>
 
     </body>
 </html>

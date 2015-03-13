@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/thisissoon/angular-title.svg?branch=master)](https://travis-ci.org/thisissoon/angular-title)
 [![Coverage Status](https://coveralls.io/repos/thisissoon/angular-title/badge.svg)](https://coveralls.io/r/thisissoon/angular-title)
 
-<!-- [![Sauce Test Status](https://saucelabs.com/browser-matrix/angular-title.svg)](https://saucelabs.com/u/angular-title) -->
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/angular-title.svg)](https://saucelabs.com/u/angular-title)
 
 Dynamically changes the page title when using ngRoute
 

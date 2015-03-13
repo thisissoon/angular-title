@@ -175,17 +175,16 @@ module.exports = function (grunt) {
 
         concat: {
             options: {
-                sourceMap: true,
+                sourceMap: false,
                 separator: ";",
                 banner: "/*! <%= pkg.name %> - v<%= pkg.version %> - " +
                     "<%= grunt.template.today(\"yyyy-mm-dd\") %> */\n"
             },
             production: {
                 src: [
-                    "<%= config.vendorFiles %>",
                     "<%= config.applicationFiles %>"
                 ],
-                dest: "<%= config.outputDir %>js/app.js"
+                dest: "<%= config.outputDir %>js/<%= pkg.name %>.js"
             }
         },
 
@@ -199,9 +198,8 @@ module.exports = function (grunt) {
             },
             production: {
                 files: {
-                    "<%= config.outputDir %>js/app.min.js":
+                    "<%= config.outputDir %>js/<%= pkg.name %>.min.js":
                     [
-                        "<%= config.vendorFiles %>",
                         "<%= config.applicationFiles %>"
                     ]
                 }
@@ -228,12 +226,13 @@ module.exports = function (grunt) {
             e2e: {
                 files: [{
                     expand: true,
-                    flatten: true,
                     src: [
-                        "app/components/angular-mocks/angular-mocks.js",
-                        "tests/e2e/app.js"
+                        "<%= config.vendorFiles %>"
                     ],
-                    dest: "<%= config.outputDir %>e2e/"
+                    dest: "<%= config.outputDir %>",
+                    rename: function(dest, src) {
+                        return dest + src.replace("app/","");
+                    }
                 }]
             }
         },

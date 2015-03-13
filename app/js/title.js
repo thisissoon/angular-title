@@ -2,7 +2,7 @@
 /**
  * Angular Title dyamically updates the document title when navigating views
  * defined in `ngRoute`'s `$routeProvider`. Simply define the title of the
- * page in your $routeProvider config using the `title` key.
+ * page in your `$routeProvider` config using the `title` key.
  *
  * If you place the name of the site inside the `title` element the directive
  * will append this string to the end of the title on each page e.g.
@@ -65,12 +65,12 @@ angular.module("sn.title", [])
                 /**
                  * The name of the site to use to append
                  * to all page titles.
-                 * @property title
+                 * @property siteTitle
                  * @type     {String}
                  * @example
                  *  My Site Name
                  */
-                var title = $element.html();
+                var siteTitle = $element.html().length > 0 ? $element.html() : undefined ;
 
                 /**
                  * Update the content of the title element to the value
@@ -80,10 +80,18 @@ angular.module("sn.title", [])
                  * @param {Object} current The requested route object
                  */
                 var onRouteChangeSuccess = function onRouteChangeSuccess($event, current){
-                    if (current && current.$$route && current.$$route.title) {
-                        $element.html(current.$$route.title + " - " + title);
-                    } else {
-                        $element.html(title);
+
+                    // route title & site title
+                    if (current && current.$$route && current.$$route.title && siteTitle){
+                        $element.html(current.$$route.title + " - " + siteTitle);
+
+                    // route title only
+                    } else if (current && current.$$route && current.$$route.title){
+                        $element.html(current.$$route.title);
+
+                    // site title only
+                    } else if (siteTitle){
+                        $element.html(siteTitle);
                     }
                 };
 
@@ -94,7 +102,11 @@ angular.module("sn.title", [])
                  * @method onRouteChangeError
                  */
                 var onRouteChangeError = function onRouteChangeError(){
-                    $element.html(ROUTE_CHANGE_ERROR_TITLE + " - " + title);
+                    if (siteTitle){
+                        $element.html(ROUTE_CHANGE_ERROR_TITLE + " - " + siteTitle);
+                    } else {
+                        $element.html(ROUTE_CHANGE_ERROR_TITLE);
+                    }
                 };
 
                 $rootScope.$on("$routeChangeSuccess", onRouteChangeSuccess);

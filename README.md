@@ -7,7 +7,7 @@
 
 Angular Title dyamically updates the document title when navigating views
 defined in `ngRoute`'s `$routeProvider`. Simply define the title of the
-page in your $routeProvider config using the `title` key.
+page in your `$routeProvider` config using the `title` key.
 
 If you place the name of the site inside the `title` element the directive
 will append this string to the end of the title on each page e.g.

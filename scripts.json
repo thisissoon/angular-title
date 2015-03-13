@@ -4,6 +4,6 @@
         "app/components/angular-route/angular-route.js"
     ],
     "application": [
-
+        "app/js/title.js"
     ]
 }

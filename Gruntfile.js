@@ -123,14 +123,14 @@ module.exports = function (grunt) {
 
         jasmine: {
             options: {
+                vendor: ["<%= config.vendorFiles %>"],
+                helpers:["app/components/angular-mocks/angular-mocks.js"],
                 specs: ["tests/unit/**/*.js"],
                 keepRunner: true,
             },
             development: {
                 src: ["<%= config.applicationFiles %>"],
                 options: {
-                    vendor: ["<%= config.vendorFiles %>"],
-                    helpers:["app/components/angular-mocks/angular-mocks.js"],
                     template: require("grunt-template-jasmine-istanbul"),
                     templateOptions: {
                         coverage: "coverage/coverage.json",
@@ -149,7 +149,7 @@ module.exports = function (grunt) {
                 }
             },
             production: {
-                src: ["<%= config.outputDir %>js/app.min.js", "app/components/angular-mocks/angular-mocks.js"]
+                src: ["<%= config.outputDir %><%= pkg.name %>.min.js"]
             }
         },
 
@@ -184,7 +184,7 @@ module.exports = function (grunt) {
                 src: [
                     "<%= config.applicationFiles %>"
                 ],
-                dest: "<%= config.outputDir %>js/<%= pkg.name %>.js"
+                dest: "<%= config.outputDir %><%= pkg.name %>.js"
             }
         },
 
@@ -198,7 +198,7 @@ module.exports = function (grunt) {
             },
             production: {
                 files: {
-                    "<%= config.outputDir %>js/<%= pkg.name %>.min.js":
+                    "<%= config.outputDir %><%= pkg.name %>.min.js":
                     [
                         "<%= config.applicationFiles %>"
                     ]

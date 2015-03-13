@@ -1,5 +1,28 @@
 "use strict";
 /**
+ * Angular Title dyamically updates the document title when navigating views
+ * defined in `ngRoute`'s `$routeProvider`. Simply define the title of the
+ * page in your $routeProvider config using the `title` key.
+ *
+ * If you place the name of the site inside the `title` element the directive
+ * will append this string to the end of the title on each page e.g.
+ * `<title>My Site Name</title>` would become `pageone - My Site Name`. The
+ * original string is also used as a fallback if the title attribute for a
+ * route has not been defined. In that case the title for that route would be
+ * `My Site Name`.
+ *
+ * @example
+ *  $routeProvider
+ *      .when("/pageone", {
+ *          controller: "pageoneCtrl"
+ *          title: "pageone",
+ *          templateUrl: "partials/pageone.html"
+ *      })
+ *      .when("/pagetwo", {
+ *          controller: "pagetwoCtrl"
+ *          title: "pagetwo",
+ *          templateUrl: "partials/pagetwo.html"
+ *      })
  * @main   sn.title
  * @module sn.title
  * @author SOON_

@@ -12,17 +12,17 @@
  * `My Site Name`.
  *
  * @example
- *  $routeProvider
- *      .when("/pageone", {
- *          controller: "pageoneCtrl"
- *          title: "pageone",
- *          templateUrl: "partials/pageone.html"
- *      })
- *      .when("/pagetwo", {
- *          controller: "pagetwoCtrl"
- *          title: "pagetwo",
- *          templateUrl: "partials/pagetwo.html"
- *      })
+    $routeProvider
+        .when("/pageone", {
+            controller: "pageoneCtrl"
+            title: "pageone",
+            templateUrl: "partials/pageone.html"
+        })
+        .when("/pagetwo", {
+            controller: "pagetwoCtrl"
+            title: "pagetwo",
+            templateUrl: "partials/pagetwo.html"
+        })
  * @main   sn.title
  * @module sn.title
  * @author SOON_
@@ -52,7 +52,7 @@ angular.module("sn.title", [])
  * the directive and it will be appended to the end of every
  * page title. eg. Page Title - My Site Name
  * @example
- *   <title>My Site Name</title>
+     <title>My Site Name</title>
  * @class  title
  * @module sn.title
  * @author SOON_
@@ -84,7 +84,7 @@ angular.module("sn.title", [])
                  * @property siteTitle
                  * @type {String}
                  * @example
-                 *  "My Site Name"
+                    "My Site Name"
                  */
                 var siteTitle =
                     snTitle.getSiteTitle() && snTitle.getSiteTitle().length > 0 ?
@@ -159,19 +159,19 @@ angular.module("sn.title", [])
  * Service that sets the title of the document by specifying
  * the page title and the site title.
  * @example
- *   angular.module("myApp", ["sn.title"])
- *     .config([
- *       "snTitleProvider",
- *       function(snTitleProvider){
- *         snTitleProvider.setSiteTitle("My Site Name");
- *       }
- *     ])
- *     .controller("myCtrl",[
- *       "snTitle",
- *       function (snTitle){
- *         snTitle.setPageTitle("My Page");
- *       }
- *     ])
+     angular.module("myApp", ["sn.title"])
+       .config([
+         "snTitleProvider",
+         function(snTitleProvider){
+           snTitleProvider.setSiteTitle("My Site Name");
+         }
+       ])
+       .controller("myCtrl",[
+         "snTitle",
+         function (snTitle){
+           snTitle.setPageTitle("My Page");
+         }
+       ])
  * @class  snTitle
  * @module sn.title
  * @author SOON_

@@ -18,6 +18,26 @@ The original string is also used as a fallback if the title attribute for a
 route has not been defined. In that case the title for that route would be
 `My Site Name`.
 
+## Install
+
+You can install this module using [bower][bower] like so:
+
+```
+bower install angular-title --save
+```
+
+Add the angular-title library file to your `index.html file` like so:
+
+```html
+<script src="path/to/angular-title/dist/angular-title.min.js"></script>
+```
+
+Then add the module to your angular app:
+
+```javascript
+angular.module("myApp", ["sn.title"])
+```
+
 ## Example Usage
 
 In your index file simply add your title element as normal:
@@ -40,6 +60,26 @@ Then in your angular module config use the `title` key in your $routeProvider co
       title: "pagetwo",
       templateUrl: "partials/pagetwo.html"
     })
+```
+
+You can also configure the site name in your angular app config like below as well
+as set the page title after your app config in the case that the data needed to
+set the title is not available in the `config` block:
+
+```javascript
+angular.module("myApp", ["sn.title"])
+  .config([
+    "snTitleProvider",
+    function(snTitleProvider){
+      snTitleProvider.setSiteTitle("My Site Name");
+    }
+  ])
+  .controller("myCtrl",[
+    "snTitle",
+    function (snTitle){
+      snTitle.setPageTitle("My Page");
+    }
+  ])
 ```
 
 This project structure is based on the [angular-seed](https://github.com/angular/angular-seed) application skeleton for a typical [AngularJS](http://angularjs.org/) web app.

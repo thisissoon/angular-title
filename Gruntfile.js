@@ -190,7 +190,7 @@ module.exports = function (grunt) {
 
         uglify: {
             options: {
-                sourceMap: true,
+                sourceMap: false,
                 sourceMapIncludeSources: true,
                 enclose: { window: "window" },
                 banner: "/*! <%= pkg.name %> - v<%= pkg.version %> - " +
@@ -309,10 +309,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask("build", [
         "clean:beforeBuild",
-        "less:production",
-        "uglify",
-        "copyBuild",
-        "processhtml:production"
+        "concat",
+        "uglify"
     ]);
 
     grunt.registerTask("release", [

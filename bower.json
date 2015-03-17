@@ -1,7 +1,7 @@
 {
   "name": "angular-title",
   "description": "Dynamically change the page title when using ngRoute",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/thisissoon/angular-title",
   "license": "MIT",
   "main": "dist/angular-title.js",

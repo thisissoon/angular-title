@@ -72,6 +72,9 @@ angular.module("sn.title", [])
     function ($rootScope, snTitle, EVENTS, ROUTE_CHANGE_ERROR_TITLE) {
         return {
             restrict: "E",
+            scope: {
+                updateOnPageChange: "="
+            },
             link: function ($scope, $element) {
 
                 /**
@@ -87,9 +90,19 @@ angular.module("sn.title", [])
                     "My Site Name"
                  */
                 var siteTitle =
-                    snTitle.getSiteTitle() && snTitle.getSiteTitle().length > 0 ?
-                        snTitle.getSiteTitle() :
-                        ($element.html().length > 0 ? $element.html() : undefined) ;
+                    (snTitle.getSiteTitle() && snTitle.getSiteTitle().length > 0) ?
+                    snTitle.getSiteTitle() :
+                    ($element.html().length > 0 ? $element.html() : undefined) ;
+
+                /**
+                 * If true will update the page title on every route change.
+                 * This is useful if updating the page title manually to disable
+                 * updates on route change.
+                 * @property updateOnPageChange
+                 * @type     {Boolean}
+                 * @default  true
+                 */
+                var updateOnPageChange = ($scope.updateOnPageChange === false) ? false : true;
 
                 /**
                  * Update the content of the title element to the value
@@ -123,13 +136,16 @@ angular.module("sn.title", [])
                  */
                 var onRouteChangeSuccess = function onRouteChangeSuccess($event, current){
 
-                    var pageTitle = null;
+                    if ( updateOnPageChange ) {
 
-                    if (current && current.$$route && current.$$route.title){
-                        pageTitle = current.$$route.title;
+                        var pageTitle = null;
+
+                        if (current && current.$$route && current.$$route.title){
+                            pageTitle = current.$$route.title;
+                        }
+
+                        setTitle($event, pageTitle);
                     }
-
-                    setTitle($event, pageTitle);
                 };
 
                 /**
@@ -139,11 +155,17 @@ angular.module("sn.title", [])
                  * @method onRouteChangeError
                  */
                 var onRouteChangeError = function onRouteChangeError(){
-                    if (siteTitle){
-                        $element.html(ROUTE_CHANGE_ERROR_TITLE + " - " + siteTitle);
-                    } else {
-                        $element.html(ROUTE_CHANGE_ERROR_TITLE);
+
+                    if ( updateOnPageChange ) {
+
+                        if (siteTitle){
+                            $element.html(ROUTE_CHANGE_ERROR_TITLE + " - " + siteTitle);
+                        } else {
+                            $element.html(ROUTE_CHANGE_ERROR_TITLE);
+                        }
+
                     }
+
                 };
 
                 $rootScope.$on(EVENTS.SET_TITLE, setTitle);

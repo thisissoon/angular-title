@@ -82,6 +82,13 @@ angular.module("myApp", ["sn.title"])
   ])
 ```
 
+If you do not require the title to be updated on each route change then you can
+disable this functionaility by setting the `update-on-page-change` attribute to `false`:
+
+```html
+<title update-on-page-change="false">My Site Name</title>
+```
+
 This project structure is based on the [angular-seed](https://github.com/angular/angular-seed) application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
 
 The project is preconfigured to install the Angular framework and a bunch of development and testing tools for instant web development gratification.

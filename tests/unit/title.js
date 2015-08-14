@@ -1,7 +1,7 @@
 "use strict";
 
 describe("sn.title:title directive", function() {
-    var element, $scope, $rootScope, errorText;
+    var element, $scope, $rootScope, errorText, snTitle;
 
     beforeEach(module("sn.title"));
 
@@ -77,6 +77,59 @@ describe("sn.title:title directive", function() {
         it("should render directive with error title text", function(){
             $rootScope.$broadcast("$routeChangeError")
             expect(element.html()).toEqual(errorText);
+        });
+
+    });
+
+    describe("Update on page change option disabled", function() {
+
+        beforeEach(inject(function (_$rootScope_, $compile, $injector) {
+            $rootScope = _$rootScope_;
+            spyOn($rootScope, "$broadcast").and.callThrough();
+
+            $scope = $rootScope.$new();
+
+            snTitle = $injector.get("snTitle");
+
+            element = "<title update-on-page-change=\"false\">My Site Name</title>";
+
+            element = $compile(element)($scope);
+            $scope.$digest();
+
+        }));
+
+        it("should render directive with correct title text", function(){
+
+            snTitle.setPageTitle("My custom title");
+            expect($scope.$broadcast).toHaveBeenCalled();
+            expect(element.html()).toEqual("My custom title - My Site Name");
+
+            $rootScope.$broadcast("$routeChangeSuccess", {
+                $$route: {
+                    title: "foo"
+                }
+            })
+            expect(element.html()).toEqual("My custom title - My Site Name");
+
+            $rootScope.$broadcast("$routeChangeSuccess", {
+                $$route: {
+                    title: undefined
+                }
+            })
+            expect(element.html()).toEqual("My custom title - My Site Name");
+        });
+
+         it("should render directive with correct title text on route change error", function(){
+
+            snTitle.setPageTitle("My custom title");
+            expect($scope.$broadcast).toHaveBeenCalled();
+            expect(element.html()).toEqual("My custom title - My Site Name");
+
+            $rootScope.$broadcast("$routeChangeError");
+            expect(element.html()).toEqual("My custom title - My Site Name");
+
+            $rootScope.$broadcast("$routeChangeSuccess");
+            expect(element.html()).toEqual("My custom title - My Site Name");
         });
 
     });

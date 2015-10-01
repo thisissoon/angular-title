@@ -1,4 +1,4 @@
-/*! angular-title - v0.1.0 - 2015-08-14 */
+/*! angular-title - v0.1.1 - 2015-10-01 */
 "use strict";
 /**
  * Angular Title dyamically updates the document title when navigating views

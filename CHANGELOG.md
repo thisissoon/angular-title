@@ -1,3 +1,8 @@
+## Changes in 0.1.1
+
+ * @edwardoparearyee: Feature: Update bower to support angular v1.4.x (#11)
+ * @edwardoparearyee: Feature: disable e2e tests for now (#10)
+
 ## Changes in 0.1.0
 
  * @edwardoparearyee: Feature: Option to disable update on route change (#7)

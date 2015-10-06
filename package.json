@@ -26,7 +26,7 @@
     "grunt-contrib-yuidoc": "~0.5.2",
     "grunt-processhtml": "~0.3.3",
     "grunt-protractor-runner": "~1.1.4",
-    "grunt-protractor-webdriver": "~0.1.9",
+    "grunt-protractor-webdriver": "git://github.com/seckardt/grunt-protractor-webdriver#e4bea15",
     "grunt-template-jasmine-istanbul": "~0.3.1",
     "protractor": "~1.4.0",
     "yuidoc-bootstrap-theme": "~1.0.4"

@@ -169,7 +169,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     path: "./node_modules/grunt-protractor-runner/node_modules/protractor/bin/",
-                    command: "webdriver-manager update && webdriver-manager start",
+                    command: "webdriver-manager update && webdriver-manager start"
                 }
             }
         },

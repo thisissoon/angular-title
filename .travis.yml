@@ -12,8 +12,7 @@ install:
 script:
   - grunt test:development
   - grunt test
-  - ./node_modules/protractor/bin/webdriver-manager update --standalone
-  - grunt e2e --ci --verbose
+  - grunt e2e --ci
 after_success:
   - ./node_modules/coveralls/bin/coveralls.js < coverage/lcov.info
 addons:

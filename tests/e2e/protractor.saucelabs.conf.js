@@ -19,29 +19,31 @@ exports.config = {
     'specs/*.js'
   ],
 
+  // Saucelabs capabilities reference
+  // https://docs.saucelabs.com/reference/platforms-configurator/#/
   multiCapabilities: [{
     'browserName': 'chrome',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (Chrome: Linux) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '39',
-    'selenium-version': '2.43.1',
+    'version': '45',
+    'selenium-version': '2.47.1',
     'platform': 'Linux'
   }, {
     'browserName': 'firefox',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (FF: Linux) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '34',
-    'selenium-version': '2.43.1',
+    'version': '41',
+    'selenium-version': '2.47.1',
     'platform': 'Linux'
   }, {
     'browserName': 'safari',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
-    'name':  pkg.name + ' (Safari: OS X 10.10) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '8',
-    'selenium-version': '2.43.1',
+    'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '8.0',
+    'selenium-version': '2.47.1',
     'platform': 'OS X 10.10'
   }, {
     'browserName': 'internet explorer',
@@ -49,7 +51,7 @@ exports.config = {
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (IE11: Win 8.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
     'version': '11',
-    'selenium-version': '2.43.1',
+    'selenium-version': '2.47.1',
     'platform': 'Windows 8.1'
   }, {
     'browserName': 'internet explorer',
@@ -57,30 +59,26 @@ exports.config = {
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (IE10: Win 8) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
     'version': '10',
-    'selenium-version': '2.43.1',
+    'selenium-version': '2.47.1',
     'platform': 'Windows 8'
   }, {
-    'browserName': 'chrome',
+    'browserName': 'android',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
-    'name':  pkg.name + ' (Chrome: Android 5.0) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '5.0',
-    'platformVersion': '5.0',
-    'platformName': 'Android',
-    'appiumVersion': '1.3.4',
+    'name':  pkg.name + ' (Andriod Browser: Android 5.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '5.1',
     'deviceName': 'Android Emulator',
+    'selenium-version': '2.47.1',
     'device-orientation': 'portrait'
   }, {
-    'browserName': 'safari',
+    'browserName': 'iphone',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
-    'name':  pkg.name + ' (Safari: iOS 8.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '8.1',
-    'platformVersion': '8.1',
-    'platformName': 'iOS',
-    'appiumVersion': '1.3.4',
-    'platform': 'iOS',
-    'deviceName': 'iPhone Simulator',
+    'name':  pkg.name + ' (Safari: iOS 9.0) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'platform': 'OS X 10.10',
+    'version': '9',
+    'deviceName': 'iPhone 6',
+    'selenium-version': '2.47.1',
     'device-orientation': 'portrait'
   }],
 

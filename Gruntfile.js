@@ -362,7 +362,7 @@ module.exports = function (grunt) {
         "copy",
         "processhtml:e2e",
         "connect:servertest",
-        "protractor_webdriver",
+        // "protractor_webdriver",
         "protractor:dist",
         "clean:afterTest"
     ]);

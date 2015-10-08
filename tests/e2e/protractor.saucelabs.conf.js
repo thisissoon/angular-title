@@ -16,7 +16,7 @@ exports.config = {
   //
   // Spec patterns are relative to the location of this config.
   specs: [
-    'specs/*.js',
+    'specs/*.js'
   ],
 
   multiCapabilities: [{

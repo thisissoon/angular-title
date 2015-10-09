@@ -16,72 +16,66 @@ exports.config = {
   //
   // Spec patterns are relative to the location of this config.
   specs: [
-    'specs/*.js',
+    'specs/*.js'
   ],
 
+  // Saucelabs capabilities reference
+  // https://docs.saucelabs.com/reference/platforms-configurator/#/
   multiCapabilities: [{
     'browserName': 'chrome',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (Chrome: Linux) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '39',
-    'selenium-version': '2.43.1',
+    'version': '45',
     'platform': 'Linux'
-  }, {
+  },{
     'browserName': 'firefox',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (FF: Linux) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '34',
-    'selenium-version': '2.43.1',
+    'version': '41',
     'platform': 'Linux'
-  }, {
+  },{
     'browserName': 'safari',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
-    'name':  pkg.name + ' (Safari: OS X 10.10) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '8',
-    'selenium-version': '2.43.1',
-    'platform': 'OS X 10.10'
-  }, {
+    'name':  pkg.name + ' (Safari: OS X 10.11) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'version': '8.1',
+    'platform': 'OS X 10.11'
+  },{
     'browserName': 'internet explorer',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (IE11: Win 8.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
     'version': '11',
-    'selenium-version': '2.43.1',
     'platform': 'Windows 8.1'
-  }, {
+  },{
     'browserName': 'internet explorer',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
     'name':  pkg.name + ' (IE10: Win 8) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
     'version': '10',
-    'selenium-version': '2.43.1',
     'platform': 'Windows 8'
-  }, {
-    'browserName': 'chrome',
+  },{
+    'browserName': 'Browser',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
-    'name':  pkg.name + ' (Chrome: Android 5.0) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '5.0',
-    'platformVersion': '5.0',
+    'name':  pkg.name + ' (Android Browser: Android 5.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
     'platformName': 'Android',
-    'appiumVersion': '1.3.4',
+    'platformVersion': '5.1',
     'deviceName': 'Android Emulator',
-    'device-orientation': 'portrait'
-  }, {
-    'browserName': 'safari',
+    'appiumVersion': '1.4.11',
+    'deviceOrientation': 'portrait'
+  },{
+    'browserName': 'Safari',
     'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     'build': process.env.TRAVIS_BUILD_NUMBER,
-    'name':  pkg.name + ' (Safari: iOS 8.1) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
-    'version': '8.1',
-    'platformVersion': '8.1',
+    'name':  pkg.name + ' (Safari: iOS 8.2) Build: ' + process.env.TRAVIS_BUILD_NUMBER,
+    'platformVersion': '8.2',
     'platformName': 'iOS',
-    'appiumVersion': '1.3.4',
-    'platform': 'iOS',
-    'deviceName': 'iPhone Simulator',
-    'device-orientation': 'portrait'
+    'deviceName': 'iPhone 6',
+    'appiumVersion': '1.3.7',
+    'deviceOrientation': 'portrait'
   }],
 
   // ----- More information for your tests ----
@@ -95,11 +89,11 @@ exports.config = {
   rootElement: 'body',
 
   onPrepare: function() {
-    browser.getCapabilities().then(function (cap) {
-      if ((cap.caps_.platform !== "iOS") && (cap.caps_.platform !== "ANDROID")){
-        browser.driver.manage().window().setSize(1366, 768)
-      }
-    });
+    // browser.getCapabilities().then(function (cap) {
+    //   if ((cap.caps_.platform !== "iOS") && (cap.caps_.platform !== "ANDROID")){
+    //     browser.driver.manage().window().setSize(1366, 768)
+    //   }
+    // });
   },
 
   // ----- The test framework -----

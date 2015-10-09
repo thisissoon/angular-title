@@ -1,3 +1,7 @@
+## Changes in 0.1.2
+
+ * @edwardoparearyee: Fix: e2e tests (#13)
+
 ## Changes in 0.1.1
 
  * @edwardoparearyee: Feature: Update bower to support angular v1.4.x (#11)

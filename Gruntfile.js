@@ -165,14 +165,6 @@ module.exports = function (grunt) {
             }
         },
 
-        protractor_webdriver: {
-            dist: {
-                options: {
-                    command: "webdriver-manager update && webdriver-manager start",
-                }
-            }
-        },
-
         concat: {
             options: {
                 sourceMap: false,
@@ -303,7 +295,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-yuidoc");
     grunt.loadNpmTasks("grunt-contrib-jasmine");
     grunt.loadNpmTasks("grunt-protractor-runner");
-    grunt.loadNpmTasks("grunt-protractor-webdriver");
     grunt.loadNpmTasks("grunt-processhtml");
     grunt.loadNpmTasks('grunt-bump');
 
@@ -361,7 +352,6 @@ module.exports = function (grunt) {
         "copy",
         "processhtml:e2e",
         "connect:servertest",
-        "protractor_webdriver",
         "protractor:dist",
         "clean:afterTest"
     ]);

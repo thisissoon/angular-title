@@ -12,3 +12,4 @@ tmp
 *.log
 _SpecRunner.html
 nohup.out
+config.bat

@@ -7,12 +7,13 @@ env:
     - secure: QIHf5H1Av+RHjXZvT+dljZa/Kv/rsokVYOM9MHBXAa8X30RZcIp/tZuWGGe2SxUhtOMnsOaAn5ladz7KmJ7dsHEHuK2mPh7FMM931nCuGc9mXp15e/z9hj7V3zeT0yCEpOuTS/CHu4002QsEa52FNz01fLZoRvNJAw+d5xftgg4=
 before_install:
   - npm install -g bower grunt-cli protractor
-  - webdriver-manager update && nohup webdriver-manager start &
+  - webdriver-manager update
 install:
   - npm install
 script:
   - grunt test:development
   - grunt test
+  - nohup webdriver-manager start &
   - grunt e2e --ci
 after_success:
   - ./node_modules/coveralls/bin/coveralls.js < coverage/lcov.info
